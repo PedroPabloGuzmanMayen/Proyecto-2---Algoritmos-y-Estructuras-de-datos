@@ -42,4 +42,10 @@ class Data_Manager:
 
             self.Career_feature[career_index][feature_index] = strong
 
-
+   def getUserLikedCareers():
+      pass
+   def getUserNotLikedCareers():
+      pass
+   def getUserCareer():
+      pass
+   
