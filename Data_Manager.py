@@ -17,35 +17,30 @@ class Data_Manager:
             self.usernames.append(record["username"])
             self.passwords.append(record["password"])
 
-   def getCareer_feature(self):
-        with self.driver.session() as session:
-         result = session.run("MATCH (c:Career)-[r:HAS_TAG]->(f:Feature) RETURN c.name AS career_name, f.name AS feature_name, r.Strong AS strong")
-
+   def getRatedCareers(self, username):
+      rated_careers =[]
+      query = """
+        MATCH (u:User {username: $username})-[:RATES]->(c:Career)
+        WHERE c.rating <> -1
+        RETURN c.name AS career_name
+        """
+      with self.driver.session() as session:
+         result = session.run(query, username=username)
          for record in result:
-            career_name = record["career_name"]
-            feature_name = record["feature_name"]
-            strong = record["strong"]
-
-            if career_name not in self.career_names:
-                self.career_names.append(career_name)
-
-            if feature_name not in self.feature_names:
-                self.feature_names.append(feature_name)
-
-            career_index = self.career_names.index(career_name)
-            feature_index = self.feature_names.index(feature_name)
-
-            if career_index >= self.Career_feature.shape[0]:
-                self.Career_feature = np.pad(self.Career_feature, ((0, career_index - self.Career_feature.shape[0] + 1), (0, 0)), mode='constant')
-            if feature_index >= self.Career_feature.shape[1]:
-                self.Career_feature = np.pad(self.Career_feature, ((0, 0), (0, feature_index - self.Career_feature.shape[1] + 1)), mode='constant')
-
-            self.Career_feature[career_index][feature_index] = strong
-
-   def getUserLikedCareers():
-      pass
-   def getUserNotLikedCareers():
-      pass
-   def getUserCareer():
-      pass
+            rated_careers.append(record["career_name"])
+      return rated_careers
    
+   def getUnratedCareers(self,username):
+      unrated_careers =[]
+      query = """
+        MATCH (u:User {username: $username})-[:RATES]->(c:Career)
+        WHERE c.rating = -1
+        RETURN c.name AS career_name
+        """
+      with self.driver.session() as session:
+         result = session.run(query, username=username)
+         for record in result:
+            unrated_careers.append(record["career_name"])
+      return unrated_careers
+
+         
