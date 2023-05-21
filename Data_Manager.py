@@ -1,3 +1,5 @@
+from neo4j import GraphDatabase
+
 class Data_Manager:
      def __init__(self):
         pass
