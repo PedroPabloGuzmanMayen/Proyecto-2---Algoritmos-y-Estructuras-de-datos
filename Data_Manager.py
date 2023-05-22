@@ -81,7 +81,7 @@ class Data_Manager:
             features_names = list(dict.fromkeys(features_names))
 
             return features_names
-   #Obtiene la matriz career-feature y feature-career
+   #Obtiene las matrices career-feature y feature-career
    def getName(self, career, feature):
        career_feature = np.zeros((len(career), len(feature)))
        with self.driver.session() as session:
