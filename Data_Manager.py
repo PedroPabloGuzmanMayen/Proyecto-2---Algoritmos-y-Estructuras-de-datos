@@ -115,16 +115,22 @@ class Data_Manager:
       with self.driver.session() as session:
          
       
-   '''    
-   def test(self, career, feature, string, query):
-       matrix= np.zeros((len(career), len(feature)))
+   ''' 
+   def getName2(self, feature, career):
+       career_feature = np.zeros((len(feature), len(career)))
        with self.driver.session() as session:
-         for i in range(len(career)):
+         for i in range(len(feature)):
              pass
-             for j in range(len(feature)):
-               result = session.run(query, career=career[i],feature=feature[j] )
+             for j in range(len(career)):
+               query = """
+                 MATCH (c:Career{name:$career})-[r:HAS_TAG]->(f:Feature{name:$feature})
+                 RETURN r.Strong AS strong
+                 """
+               result = session.run(query, career=career[j],feature=feature[i] )
                for record in result:
-                   matrix[i][j] = record[string]
+                   career_feature[i][j] = record["strong"]
 
-         return matrix
+         return career_feature
+       
+   
 

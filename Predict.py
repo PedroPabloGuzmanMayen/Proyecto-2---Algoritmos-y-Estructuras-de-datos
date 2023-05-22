@@ -6,7 +6,7 @@ class Predict:
          return predicted_ratings #retornar el resultado de la multiplicación
      #Sirve para normalizar la matriz usario-característica
      def normalize(self, user_feature): #user_featue: matriz con la valoracion del usuario a una caracteristica
-         number = np.sum(user_feature[0]) #Sumar todos los elementos de la fila 0 de la matriz
+         number = np.sum(user_feature) #Sumar todos los elementos de la fila 0 de la matriz
          escalar = 1/number #Definir un escalar utilizando el resultado de la suma anterior
          user_feature = user_feature * escalar #Multiplicar la matriz y el escalar
          return user_feature #Retornar la matriz normalizada
