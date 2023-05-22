@@ -99,17 +99,22 @@ class Data_Manager:
          return career_feature
    '''
    Guardar el método para encontrar la posible solución más eficiente
-   def test(self, career, feature, string, query):
-       matrix= np.zeros((len(career), len(feature)))
+   def matrixGenerator(self, array1, array2, query, key):
+       matrix= np.zeros((len(array1), len(array2)))
        with self.driver.session() as session:
-         for i in range(len(career)):
+         for i in range(len(array1)):
              pass
-             for j in range(len(feature)):
-               result = session.run(query, career=career[i],feature=feature[j] )
+             for j in range(len(array2)):
+               result = session.run(query, array1=array1[i],array2=array2[j] )
                for record in result:
-                   matrix[i][j] = record[string]
+                   matrix[i][j] = record[key]
 
          return matrix
+
+   def arrayGenerator(self, username, query, key):
+      with self.driver.session() as session:
+         
+      
    '''    
    def test(self, career, feature, string, query):
        matrix= np.zeros((len(career), len(feature)))
