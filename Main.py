@@ -28,7 +28,9 @@ FeatureCareerMatrix = data_manager.getName2(feature_names, unratedcareers)
 
 #Predecir
 User_feature = predictor.getUser_feature(ratingMatrix, CareerFeatureMatrix)
+print(User_feature)
 User_possible = predictor.predict(User_feature, FeatureCareerMatrix)
+print(User_possible)
 Recommended_carreers = recommender.recommend(User_possible, unratedcareers)
 
 for i in range(len(Recommended_carreers)):
