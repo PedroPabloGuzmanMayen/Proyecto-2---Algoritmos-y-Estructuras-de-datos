@@ -2,7 +2,10 @@ import tkinter as tk
 from tkinter import messagebox
 from Data_Manager import Data_Manager
 from LogIn import LogIn 
-
+from User import user
+from Predict import Predict
+from Recommend import Recommend
+from Menu import Menu
 
 class LogInGUI:
     def __init__(self):
@@ -14,6 +17,8 @@ class LogInGUI:
 
         self.login_manager = LogIn()
         self.data = Data_Manager()
+        self.predictor = Predict()
+        self.recomendatior = Recommend()
         self.data.getLogInData()
 
         self.usernames = self.data.usernames
@@ -47,6 +52,20 @@ class LogInGUI:
 
     def login(self, username, password):
         if self.login_manager.checkData(username, password, self.usernames, self.passwords):
+            Rated_Careers = self.data.getRatedCareers(username)
+            Unrated_Careers = self.data.getUnratedCareers(username)
+            userRating = self.data.createUserRating(username, Rated_Careers)
+            Features = self.data.getFeaturenames()
+            career_Feature = self.data.getName(Rated_Careers,Features)
+            feature_career = self.data.getName2(Features, Unrated_Careers)
+            User_feature = self.predictor.getUser_feature(userRating, career_Feature)
+            Predictions = self.predictor.predict(User_feature, feature_career)
+            Recomendations = self.recomendatior.recommend(Predictions, Unrated_Careers)
+            User = user(username, User_feature, userRating, Rated_Careers, Unrated_Careers, Features, feature_career, career_Feature, Recomendations, Predictions)
+            self.window.destroy()
+            Menu(User, Recomendations)
+
+
             messagebox.showinfo("Login", "Login successful!")
         else:
             messagebox.showerror("Login", "Invalid username or password.")
