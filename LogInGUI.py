@@ -5,7 +5,7 @@ from LogIn import LogIn
 from User import user
 from Predict import Predict
 from Recommend import Recommend
-from Menu import Menu
+from MainMenu import Menu
 
 class LogInGUI:
     def __init__(self):
@@ -65,8 +65,6 @@ class LogInGUI:
             self.window.destroy()
             Menu(User, Recomendations)
 
-
-            messagebox.showinfo("Login", "Login successful!")
         else:
             messagebox.showerror("Login", "Invalid username or password.")
 
