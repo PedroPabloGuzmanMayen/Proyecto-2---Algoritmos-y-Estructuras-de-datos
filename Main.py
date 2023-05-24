@@ -11,18 +11,19 @@ data_manager.getLogInData()
 # Definir las variables
 usernames = data_manager.usernames
 passwords = data_manager.passwords
-ratedcareers = data_manager.getRatedCareers("Freddie")
+ratedcareers = data_manager.getRatedCareers("Freddie") #Carreras valoradas por Freddie
+print(ratedcareers)
 
-unratedcareers = data_manager.getUnratedCareers("Freddie")
+unratedcareers = data_manager.getUnratedCareers("Freddie") #Carreras no valoradas por Freddie
+print(unratedcareers)
+ratingMatrix = data_manager.createUserRating("Freddie", ratedcareers) #Ratings dados por Freddie
 
-ratingMatrix = data_manager.createUserRating("Freddie", ratedcareers)
 
+feature_names = data_manager.getFeaturenames() #Nombre de las features
 
-feature_names = data_manager.getFeaturenames()
+CareerFeatureMatrix = data_manager.getName(ratedcareers, feature_names) #Relación entre las características y las carreras valoradas por Freddie
 
-CareerFeatureMatrix = data_manager.getName(ratedcareers, feature_names)
-
-FeatureCareerMatrix = data_manager.getName2(feature_names, unratedcareers)
+FeatureCareerMatrix = data_manager.getName2(feature_names, unratedcareers) #Relación entre las características y carreeras no valoradas por Freddie
 
 
 

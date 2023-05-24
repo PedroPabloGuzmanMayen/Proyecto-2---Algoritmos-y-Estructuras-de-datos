@@ -1,44 +1,54 @@
 import tkinter as tk
 from tkinter import messagebox
+from Data_Manager import Data_Manager
+from LogIn import LogIn 
 
-class LoginPage:
+
+class LogInGUI:
     def __init__(self):
         self.window = tk.Tk()
+
         self.window.title("Login")
         self.window.geometry("300x200")
+        self.window.configure(bg="#F4F4F4")
 
-        # Create a label with the title
-        title_label = tk.Label(self.window, text="Login", font=("Arial", 16))
-        title_label.pack(pady=20)
+        self.login_manager = LogIn()
+        self.data = Data_Manager()
+        self.data.getLogInData()
 
-        # Create username label and entry field
-        username_label = tk.Label(self.window, text="Username:")
-        username_label.pack()
-        self.username_entry = tk.Entry(self.window)
-        self.username_entry.pack()
-
-        # Create password label and entry field
-        password_label = tk.Label(self.window, text="Password:")
-        password_label.pack()
-        self.password_entry = tk.Entry(self.window, show="*")
-        self.password_entry.pack()
-
-        # Create the login button
-        login_button = tk.Button(self.window, text="Login", command=self.login)
-        login_button.pack(pady=10)
-
+        self.usernames = self.data.usernames
+        self.passwords = self.data.passwords
+        print(self.usernames)
+        print(self.passwords)
+        self.create_widgets()
         self.window.mainloop()
 
-    def login(self):
-        # Get the entered username and password
-        username = self.username_entry.get()
-        password = self.password_entry.get()
+    def create_widgets(self):
+        # Title label
+        title_label = tk.Label(self.window, text="Login", font=("Arial", 16), bg="#F4F4F4")
+        title_label.pack(pady=10)
 
-        # Check if the username and password are valid
-        if username == "admin" and password == "password":
-            messagebox.showinfo("Success", "Login Successful!")
+        # Username label and entry
+        username_label = tk.Label(self.window, text="Username", font=("Arial", 12), bg="#F4F4F4")
+        username_label.pack()
+        username_entry = tk.Entry(self.window, font=("Arial", 12))
+        username_entry.pack(pady=5)
+
+        # Password label and entry
+        password_label = tk.Label(self.window, text="Password", font=("Arial", 12), bg="#F4F4F4")
+        password_label.pack()
+        password_entry = tk.Entry(self.window, show="*", font=("Arial", 12))
+        password_entry.pack(pady=5)
+
+        # Login button
+        login_button = tk.Button(self.window, text="Login", font=("Arial", 12), bg="#4CAF50", fg="white",
+                                 command=lambda: self.login(username_entry.get(), int(password_entry.get())))
+        login_button.pack(pady=10)
+
+    def login(self, username, password):
+        if self.login_manager.checkData(username, password, self.usernames, self.passwords):
+            messagebox.showinfo("Login", "Login successful!")
         else:
-            messagebox.showerror("Error", "Invalid username or password")
+            messagebox.showerror("Login", "Invalid username or password.")
 
-# Create an instance of the LoginPage class
-page = LoginPage()
+

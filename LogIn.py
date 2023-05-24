@@ -6,7 +6,7 @@ class LogIn:
              return False
          else:
             userIndex = array1.index(username)
-            if(password == array2[userIndex] and username == array2[userIndex]):
+            if(password == array2[userIndex] and username == array1[userIndex]):
                 return True
             else: 
                 return False

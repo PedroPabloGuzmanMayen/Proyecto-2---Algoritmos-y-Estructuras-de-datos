@@ -1,7 +1,15 @@
-import numpy as np
+hola = [1,2,2,3]
 
-matrix = np.array([[1, 2, 3],
-                   [4, 5, 6],
-                   [7, 8, 9]])
+def convert(lista):
+    lista.append(9)
 
-print(matrix*2)
+convert(hola)
+print(hola)
+print("Hello")
+var = 1
+var2 = 2
+
+def suma(num1, num2):
+    return num1+num2
+res = suma(var, var2)
+print(hola[4])
