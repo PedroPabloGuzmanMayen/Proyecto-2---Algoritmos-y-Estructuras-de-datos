@@ -1,15 +1,5 @@
-hola = [1,2,2,3]
+from Data_Manager import Data_Manager
 
-def convert(lista):
-    lista.append(9)
+data = Data_Manager()
 
-convert(hola)
-print(hola)
-print("Hello")
-var = 1
-var2 = 2
-
-def suma(num1, num2):
-    return num1+num2
-res = suma(var, var2)
-print(hola[4])
+data.setRating("Freddie",3,"Ingenieria Civil Arquitectonica")

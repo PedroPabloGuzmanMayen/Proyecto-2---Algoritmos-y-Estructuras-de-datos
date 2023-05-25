@@ -135,18 +135,27 @@ class Data_Manager:
    def setRating(self,username, rating, career):
       query= """
          MATCH(u:User{username:$username})-[r:RATES]->(c:Career{name:$career})
-         SET r.Rating = $rating
+         SET r.rating = $rating
          """
       with self.driver.session() as session:
          session.run(query, username=username,rating=rating, career=career)
       
       
-   def createUser(username, password):
+   def createUser(self,username, password):
       query = """
       CREATE(u:User{username:$username, password:$password})
+      """
+      with self.driver.session() as session:
+         session.run(query, username=username,password=password)
+
+   def setRelations(self,username):
+      query = """
+      MATCH(u:User{username:$username})
       MATCH(c:Career)
       CREATE (u)-[:RATES{rating:-1}]->(c)
       """
+      with self.driver.session() as session:
+         session.run(query, username=username)
        
    
 

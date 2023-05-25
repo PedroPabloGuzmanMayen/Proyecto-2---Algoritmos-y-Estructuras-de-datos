@@ -34,13 +34,13 @@ class LogInGUI:
         title_label.pack(pady=10)
 
         # Username label and entry
-        username_label = tk.Label(self.window, text="Username", font=("Arial", 12), bg="#F4F4F4")
+        username_label = tk.Label(self.window, text="Nombre de usuario", font=("Arial", 12), bg="#F4F4F4")
         username_label.pack()
         username_entry = tk.Entry(self.window, font=("Arial", 12))
         username_entry.pack(pady=5)
 
         # Password label and entry
-        password_label = tk.Label(self.window, text="Password", font=("Arial", 12), bg="#F4F4F4")
+        password_label = tk.Label(self.window, text="Contraseña", font=("Arial", 12), bg="#F4F4F4")
         password_label.pack()
         password_entry = tk.Entry(self.window, show="*", font=("Arial", 12))
         password_entry.pack(pady=5)
