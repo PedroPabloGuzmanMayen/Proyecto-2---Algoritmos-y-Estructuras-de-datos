@@ -62,7 +62,7 @@ class LogInGUI:
             Predictions = self.predictor.predict(User_feature, feature_career)
             Recomendations = self.recomendatior.recommend(Predictions, Unrated_Careers)
             User = user(username, User_feature, userRating, Rated_Careers, Unrated_Careers, Features, feature_career, career_Feature, Recomendations, Predictions)
-            array =["Hola", "Adios", "Me voy"]
+
             self.window.destroy()
             Menu(User, Recomendations)
 
