@@ -1,5 +1,6 @@
 import tkinter as tk
 from CareerGUI import CareerGUI
+from ExploreGUI import ExploreGUI
 
 class Menu:
     def __init__(self, user, recommendations):
@@ -68,8 +69,8 @@ class Menu:
 
     def explore_action(self):
         # Action for "Explorar" button
-        print("Explorar button clicked")
-        print(self.user.username)
+        ExploreGUI(self.user.unratedCareers,self, self.user)
+        pass
 
     def button_action(self, index):
         # Action for each generated button
