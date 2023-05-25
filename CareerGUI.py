@@ -8,6 +8,8 @@ class CareerGUI:
         self.window.title("MyCareer Menu")
         self.window.geometry("300x400")
         self.window.configure(bg="#F4F4F4")
+        self.career = career_name
+        self.data = Data_Manager()
 
         # Create the label with the career name
         career_label = tk.Label(self.window, text=career_name, font=("Arial", 16), bg="#F4F4F4")
@@ -19,7 +21,7 @@ class CareerGUI:
 
         # Create the "Valorar" button
         valorar_button = tk.Button(self.window, text="Valorar", font=("Arial", 12), bg="#4CAF50", fg="white",
-                                   command=self.valorar_action(career_name, "hola", self.user))
+                                   command=self.valorar_action(textbox.get(), self.user, self.career))
         valorar_button.pack(pady=10)
 
         # Create the "Atrás" button
@@ -29,9 +31,14 @@ class CareerGUI:
 
         self.window.protocol("WM_DELETE_WINDOW", self.back_action)
 
-    def valorar_action(self, name, rating, user):
-        self.menu.update_buttons([1,2,34])
+    def valorar_action(self, rating, user, name):
+    
+        self.data.setRating(user.username, name, int(rating))
+        self.user.
+
         self.menu.update_user(self.user)
+        self.menu.update_buttons([1,2,34], self.user.username)
+    
 
     def back_action(self):
         # Action for "Atrás" button

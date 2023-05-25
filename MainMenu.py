@@ -10,7 +10,6 @@ class Menu:
 
         self.user = user
         self.recommendations = recommendations
-
         self.buttons = []  # Keep track of generated buttons
 
         self.create_widgets()
@@ -59,7 +58,6 @@ class Menu:
 
         self.recommendations = new_recommendations
         self.buttons = []  # Clear the list of buttons
-
         # Generate new buttons
         self.generate_buttons()
 
