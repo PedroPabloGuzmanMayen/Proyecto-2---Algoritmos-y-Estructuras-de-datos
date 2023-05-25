@@ -21,23 +21,24 @@ class CareerGUI:
 
         # Create the "Valorar" button
         valorar_button = tk.Button(self.window, text="Valorar", font=("Arial", 12), bg="#4CAF50", fg="white",
-                                   command=self.valorar_action(textbox.get(), self.user, self.career))
+                                   command=lambda: self.valorar_action(textbox.get(), self.user, self.career))
         valorar_button.pack(pady=10)
 
         # Create the "Atrás" button
         back_button = tk.Button(self.window, text="Atrás", font=("Arial", 12), bg="#FF5722", fg="white",
-                                command=self.back_action)
+                                command=lambda: self.back_action())
         back_button.pack(side=tk.LEFT, padx=5)
 
         self.window.protocol("WM_DELETE_WINDOW", self.back_action)
 
     def valorar_action(self, rating, user, name):
-    
-        self.data.setRating(user.username, name, int(rating))
-        self.user.
+        if rating == "":
+            pass
+        else:
+            self.user.username = "waaa"
 
-        self.menu.update_user(self.user)
-        self.menu.update_buttons([1,2,34], self.user.username)
+            self.menu.update_user(self.user)
+            self.menu.update_buttons([1,2,34])
     
 
     def back_action(self):

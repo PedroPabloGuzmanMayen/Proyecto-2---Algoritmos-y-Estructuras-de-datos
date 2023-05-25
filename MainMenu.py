@@ -7,8 +7,8 @@ class Menu:
         self.window.title("MyCareer Menu")
         self.window.geometry("300x400")
         self.window.configure(bg="#F4F4F4")
-
         self.user = user
+        print(self.user.username)
         self.recommendations = recommendations
         self.buttons = []  # Keep track of generated buttons
 
@@ -53,6 +53,7 @@ class Menu:
 
     def update_buttons(self, new_recommendations):
         # Clear existing buttons
+        print(self.user.username)
         for button in self.buttons:
             button.destroy()
 
@@ -68,6 +69,7 @@ class Menu:
     def explore_action(self):
         # Action for "Explorar" button
         print("Explorar button clicked")
+        print(self.user.username)
 
     def button_action(self, index):
         # Action for each generated button
