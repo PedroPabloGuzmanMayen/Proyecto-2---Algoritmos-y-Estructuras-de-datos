@@ -24,14 +24,9 @@ class Menu:
         line1 = tk.Frame(self.window, height=2, bd=1, relief=tk.SUNKEN)
         line1.pack(fill=tk.X, padx=5, pady=5)
 
- 
-        like_button = tk.Button(self.window, text="Tus me gusta", font=("Arial", 12), bg="#4CAF50", fg="white",
-                                command=self.like_action)
-        like_button.pack(pady=10)
 
-  
         explore_button = tk.Button(self.window, text="Explorar", font=("Arial", 12), bg="#2196F3", fg="white",
-                                   command=self.explore_action)
+                               command=lambda: self.explore_action())
         explore_button.pack(pady=10)
 
         line2 = tk.Frame(self.window, height=2, bd=1, relief=tk.SUNKEN)
@@ -62,13 +57,10 @@ class Menu:
         self.generate_buttons()
 
     def like_action(self):
-
         print("Tus me gusta button clicked")
 
     def explore_action(self):
-
-        ExploreGUI(self.user.unratedCareers,self, self.user)
-        pass
+        ExploreGUI(self.user.careerNames,self, self.user)
 
     def button_action(self, index):
 
