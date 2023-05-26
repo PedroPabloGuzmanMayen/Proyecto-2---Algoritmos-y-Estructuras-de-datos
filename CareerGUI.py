@@ -16,20 +16,18 @@ class CareerGUI:
         self.recomend = Recommend()
         self.predictor = Predict()
 
-        # Create the label with the career name
         career_label = tk.Label(self.window, text=career_name, font=("Arial", 16), bg="#F4F4F4")
         career_label.pack(pady=20)
 
-        # Create the textbox
+    
         textbox = tk.Entry(self.window, font=("Arial", 12))
         textbox.pack()
 
-        # Create the "Valorar" button
+
         valorar_button = tk.Button(self.window, text="Valorar", font=("Arial", 12), bg="#4CAF50", fg="white",
                                    command=lambda: self.valorar_action(textbox.get(), self.user, self.career))
         valorar_button.pack(pady=10)
 
-        # Create the "Atrás" button
         back_button = tk.Button(self.window, text="Atrás", font=("Arial", 12), bg="#FF5722", fg="white",
                                 command=lambda: self.back_action())
         back_button.pack(side=tk.LEFT, padx=5)
@@ -65,6 +63,6 @@ class CareerGUI:
     
 
     def back_action(self):
-        # Action for "Atrás" button
+
         self.window.withdraw()
         self.menu.window.deiconify()

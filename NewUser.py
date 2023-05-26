@@ -26,23 +26,21 @@ class NewUser:
         self.window.mainloop()
 
     def create_widgets(self):
-        # Title label
+
         title_label = tk.Label(self.window, text="Crear usuario", font=("Arial", 16), bg="#F4F4F4")
         title_label.pack(pady=10)
 
-        # Username label and entry
         username_label = tk.Label(self.window, text="Nombre de usuario", font=("Arial", 12), bg="#F4F4F4")
         username_label.pack()
         username_entry = tk.Entry(self.window, font=("Arial", 12))
         username_entry.pack(pady=5)
 
-        # Password label and entry
+
         password_label = tk.Label(self.window, text="Contraseña", font=("Arial", 12), bg="#F4F4F4")
         password_label.pack()
         password_entry = tk.Entry(self.window, show="*", font=("Arial", 12))
         password_entry.pack(pady=5)
 
-        # Login button
         login_button = tk.Button(self.window, text="Login", font=("Arial", 12), bg="#4CAF50", fg="white",
                                  command=lambda: self.login(username_entry.get(), password_entry.get()))
         login_button.pack(pady=10)
