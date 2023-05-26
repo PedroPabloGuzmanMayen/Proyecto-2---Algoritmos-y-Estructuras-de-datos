@@ -144,8 +144,16 @@ class Data_Manager:
       MATCH(c:Career)
       RETURN c.name as Name
       """
+      careerNames =[]
       with self.driver.session() as session:
-         session.run(query)
+         result =session.run(query)
+
+         for record in result:
+            careerNames.append(record["Name"])
+
+      return careerNames
+
+
 
 
    

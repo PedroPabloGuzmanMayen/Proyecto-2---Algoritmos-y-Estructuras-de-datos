@@ -54,7 +54,7 @@ class NewUser:
             if username in self.usernames:
                 messagebox.showinfo("Error","Nombre de usuario ya existente, intenta con otro")
             else: 
-                print("Muy bien")
+                self.user = user()
 
 hola = NewUser()
 
