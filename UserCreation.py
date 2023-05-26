@@ -1,11 +1,13 @@
 import tkinter as tk
 from tkinter import messagebox
 import numpy as np
+from Data_Manager import Data_Manager
 from User import user
-from 
+from Predict import Predict
+from Recommend import Recommend
 
 class UserCreationGUI:
-    def __init__(self, array, np_array):
+    def __init__(self, array, np_array, username):
         self.array = array
         self.np_array = np_array
         self.index = 0

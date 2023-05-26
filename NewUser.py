@@ -60,7 +60,7 @@ class NewUser:
                 self.data.setRelations(username)
                 Features = self.data.getFeaturenames()
                 matrix = np.zeros(len(Features))
-                UserCreationGUI(Features, matrix)
+                UserCreationGUI(Features, matrix, username)
 
 
 
