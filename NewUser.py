@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 from Data_Manager import Data_Manager
 from LogIn import LogIn 
-from User import user
+from UserCreation import UserCreationGUI
+import numpy as np
 
 class NewUser:
     def __init__(self):
@@ -14,6 +15,7 @@ class NewUser:
 
 
         self.data = Data_Manager()
+
         self.data.getLogInData()
 
         self.usernames = self.data.usernames
@@ -54,7 +56,14 @@ class NewUser:
             if username in self.usernames:
                 messagebox.showinfo("Error","Nombre de usuario ya existente, intenta con otro")
             else: 
-                self.user = user()
+                self.data.createUser(username, int(password))
+                self.data.setRelations(username)
+                Features = self.data.getFeaturenames()
+                matrix = np.zeros(len(Features))
+                UserCreationGUI(Features, matrix)
 
-hola = NewUser()
+
+
+
+
 

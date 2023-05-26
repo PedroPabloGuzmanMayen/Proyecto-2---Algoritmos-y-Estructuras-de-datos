@@ -1,5 +1,6 @@
 import tkinter as tk
 from LogInGUI import LogInGUI
+from NewUser import NewUser
 class FirstPage:
     def __init__(self):
         self.window = tk.Tk()
@@ -30,7 +31,7 @@ class FirstPage:
         self.window.mainloop()
 
     def open_new_user_window(self):
-        pass
+        NewUser()
 
     def open_login_window(self):
         self.window.destroy()

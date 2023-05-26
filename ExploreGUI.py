@@ -1,4 +1,5 @@
 import tkinter as tk
+from CareerGUI import CareerGUI
 
 class ExploreGUI:
     def __init__(self, array, menu, user):
@@ -9,6 +10,7 @@ class ExploreGUI:
         self.Careers = array
         self.menu = menu
         self.user = user
+        self.buttons = []
 
         # Create a frame for the header
         header_frame = tk.Frame(self.window, bg="#F4F4F4")
@@ -27,9 +29,10 @@ class ExploreGUI:
         line.pack()
 
         # Generate buttons for each element in the array
-        for career in self.Careers:
-            button = tk.Button(self.window, text=career, command=lambda c=career: self.buttonClicked(c), bg="#ECECEC", fg="#000000")
+        for i, element in enumerate(self.Careers):
+            button = tk.Button(self.window, text=str(element), command=lambda i=i: self.buttonClicked(i))
             button.pack(pady=5)
+            self.buttons.append(button)
 
         self.window.mainloop()
 
@@ -38,10 +41,10 @@ class ExploreGUI:
         self.menu.window.deiconify()
 
 
-    def buttonClicked(self, career):
-        # Handle button click events for each career
-        # Add your code here
-        pass
+    def buttonClicked(self, index):
+       self.window.destroy()
+       CareerGUI(self.Careers[index], self.menu, self.user)
+
 
 
 

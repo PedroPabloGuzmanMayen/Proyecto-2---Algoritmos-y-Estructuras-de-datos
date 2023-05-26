@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 import numpy as np
-
+from User import user
+from 
 
 class UserCreationGUI:
     def __init__(self, array, np_array):
@@ -49,7 +50,3 @@ class UserCreationGUI:
                 self.label_array_element.config(text=self.array[self.index])
                 self.entry_value.delete(0, tk.END)
 
-# Example usage
-array = ["Element 1", "Element 2", "Element 3"]
-np_array = np.zeros(len(array))
-gui = UserCreationGUI(array, np_array)
