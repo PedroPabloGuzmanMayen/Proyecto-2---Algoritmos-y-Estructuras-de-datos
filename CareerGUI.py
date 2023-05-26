@@ -1,5 +1,8 @@
 import tkinter as tk
 from Data_Manager import Data_Manager
+from tkinter import messagebox
+from Recommend import Recommend
+from Predict import Predict
 class CareerGUI:
     def __init__(self, career_name, menu, user):
         self.menu = menu
@@ -10,6 +13,8 @@ class CareerGUI:
         self.window.configure(bg="#F4F4F4")
         self.career = career_name
         self.data = Data_Manager()
+        self.recomend = Recommend()
+        self.predictor = Predict()
 
         # Create the label with the career name
         career_label = tk.Label(self.window, text=career_name, font=("Arial", 16), bg="#F4F4F4")
@@ -35,10 +40,46 @@ class CareerGUI:
         if rating == "":
             pass
         else:
-            self.user.username = "waaa"
+            self.data.setRating(user.username,int(rating), name)
+            self.user.ratedCareers = self.data.getRatedCareers(self.user.username)
+            print("Carreras valoradas")
+            print(self.user.ratedCareers)
+            print()
+            self.user.unratedCareers = self.data.getUnratedCareers(self.user.username)
+            print("No valoradas")
+            print(self.user.unratedCareers)
+            print()
+            self.user.user_RatedCareers = self.data.createUserRating(self.user.username, self.user.ratedCareers)
+            print("Matriz usuario_Carreras valoradas")
+            print(self.user.user_RatedCareers)
+            print()
+            self.user.featurenames = self.data.getFeaturenames()
+            print("Nombres deatures:")
+            print(self.user.featurenames)
+            print()
+            career_Feature = self.data.getName(self.user.ratedCareers,self.user.featurenames)
+            print("Matriz carreravalorada-Caracteristica")
+            print(career_Feature)
+            print()
+            self.user.feature_Unrated = self.data.getName2(self.user.featurenames, self.user.unratedCareers)
+            print("Matriz feature_Carrera no valorada")
+            print(self.user.feature_Unrated)
+            print()
+            self.user.user_feature = self.predictor.getUser_feature(self.user.user_RatedCareers, career_Feature)
+            print("User feature")
+            print(self.user.user_feature)
+            print()
+            self.user.userPredictions = self.predictor.predict(self.user.user_feature, self.user.feature_Unrated)
+            print("Usuario_Carrera no valorda")
+            print(self.user.userPredictions)
+            print()
+            self.user.predictionNames = self.recomend.recommend(self.user.userPredictions, self.user.featurenames)
+            print("Carreras recomendadas")
+            print(self.user.predictionNames)
+            print()
 
             self.menu.update_user(self.user)
-            self.menu.update_buttons([1,2,34])
+            self.menu.update_buttons(self.user.predictionNames)
     
 
     def back_action(self):

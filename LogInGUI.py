@@ -60,7 +60,9 @@ class LogInGUI:
             feature_career = self.data.getName2(Features, Unrated_Careers)
             User_feature = self.predictor.getUser_feature(userRating, career_Feature)
             Predictions = self.predictor.predict(User_feature, feature_career)
+            print(Predictions)
             Recomendations = self.recomendatior.recommend(Predictions, Unrated_Careers)
+            print(Recomendations)
             User = user(username, User_feature, userRating, Rated_Careers, Unrated_Careers, Features, feature_career, career_Feature, Recomendations, Predictions)
 
             self.window.destroy()

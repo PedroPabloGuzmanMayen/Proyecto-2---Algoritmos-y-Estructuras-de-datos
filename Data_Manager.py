@@ -157,5 +157,11 @@ class Data_Manager:
       with self.driver.session() as session:
          session.run(query, username=username)
        
+   def getNames():
+      query ="""
+      MATCH(c:Career)
+      RETURN c.name as Name
+      """
+ 
    
 

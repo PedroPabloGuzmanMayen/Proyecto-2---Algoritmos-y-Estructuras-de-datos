@@ -17,14 +17,14 @@ print(ratedcareers)
 unratedcareers = data_manager.getUnratedCareers("Freddie") #Carreras no valoradas por Freddie
 print(unratedcareers)
 ratingMatrix = data_manager.createUserRating("Freddie", ratedcareers) #Ratings dados por Freddie
-
+print(ratingMatrix)
 
 feature_names = data_manager.getFeaturenames() #Nombre de las features
-
+print(feature_names)
 CareerFeatureMatrix = data_manager.getName(ratedcareers, feature_names) #Relación entre las características y las carreras valoradas por Freddie
-
+print(CareerFeatureMatrix)
 FeatureCareerMatrix = data_manager.getName2(feature_names, unratedcareers) #Relación entre las características y carreeras no valoradas por Freddie
-
+print(FeatureCareerMatrix)
 
 
 #Predecir
