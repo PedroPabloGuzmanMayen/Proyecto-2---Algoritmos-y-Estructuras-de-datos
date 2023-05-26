@@ -152,10 +152,3 @@ class Data_Manager:
             careerNames.append(record["Name"])
 
       return careerNames
-
-
-
-
-   
-   
-
