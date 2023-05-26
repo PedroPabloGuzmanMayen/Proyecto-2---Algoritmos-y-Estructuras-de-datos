@@ -97,25 +97,7 @@ class Data_Manager:
                    career_feature[i][j] = record["strong"]
 
          return career_feature
-   '''
-   Guardar el método para encontrar la posible solución más eficiente
-   def matrixGenerator(self, array1, array2, query, key):
-       matrix= np.zeros((len(array1), len(array2)))
-       with self.driver.session() as session:
-         for i in range(len(array1)):
-             pass
-             for j in range(len(array2)):
-               result = session.run(query, array1=array1[i],array2=array2[j] )
-               for record in result:
-                   matrix[i][j] = record[key]
 
-         return matrix
-
-   def arrayGenerator(self, username, query, key):
-      with self.driver.session() as session:
-         
-      
-   ''' 
    def getName2(self, feature, career):
        career_feature = np.zeros((len(feature), len(career)))
        with self.driver.session() as session:
@@ -157,11 +139,15 @@ class Data_Manager:
       with self.driver.session() as session:
          session.run(query, username=username)
        
-   def getNames():
+   def getNames(self):
       query ="""
       MATCH(c:Career)
       RETURN c.name as Name
       """
- 
+      with self.driver.session() as session:
+         session.run(query)
+
+
+   
    
 
