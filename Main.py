@@ -11,12 +11,12 @@ data_manager.getLogInData()
 # Definir las variables
 usernames = data_manager.usernames
 passwords = data_manager.passwords
-ratedcareers = data_manager.getRatedCareers("Freddie") #Carreras valoradas por Freddie
+ratedcareers = data_manager.getRatedCareers("Adios") #Carreras valoradas por Freddie
 print(ratedcareers)
 
-unratedcareers = data_manager.getUnratedCareers("Freddie") #Carreras no valoradas por Freddie
+unratedcareers = data_manager.getUnratedCareers("Adios") #Carreras no valoradas por Freddie
 print(unratedcareers)
-ratingMatrix = data_manager.createUserRating("Freddie", ratedcareers) #Ratings dados por Freddie
+ratingMatrix = data_manager.createUserRating("Adios", ratedcareers) #Ratings dados por Freddie
 print(ratingMatrix)
 
 feature_names = data_manager.getFeaturenames() #Nombre de las features
