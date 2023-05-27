@@ -12,7 +12,6 @@ class Menu:
         print(self.user.username)
         self.recommendations = recommendations
         self.buttons = []  
-
         self.create_widgets()
 
     def create_widgets(self):
@@ -53,7 +52,6 @@ class Menu:
 
         self.recommendations = new_recommendations
         self.buttons = []  
-
         self.generate_buttons()
 
     def like_action(self):
@@ -70,6 +68,7 @@ class Menu:
     def update_user(self, new_user):
 
         self.user = new_user
+        
 
     def run(self):
         self.window.mainloop()
